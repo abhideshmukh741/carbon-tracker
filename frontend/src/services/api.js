@@ -21,8 +21,13 @@ api.interceptors.request.use(
     (error) => Promise.reject(error)
 );
 
+let fastApiUrl = import.meta.env.VITE_FASTAPI_URL || 'http://localhost:8000';
+if (fastApiUrl && fastApiUrl.endsWith('/')) {
+    fastApiUrl = fastApiUrl.slice(0, -1);
+}
+
 export const predict_api = axios.create({
-    baseURL: import.meta.env.VITE_FASTAPI_URL || 'http://localhost:8000',
+    baseURL: fastApiUrl,
 });
 
 export default api;
