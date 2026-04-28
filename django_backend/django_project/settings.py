@@ -65,12 +65,12 @@ REST_FRAMEWORK = {
 if os.environ.get('DB_NAME'):
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.mysql',
+            'ENGINE': 'django.db.backends.postgresql',
             'NAME': os.environ.get('DB_NAME', 'carbon_db'),
-            'USER': os.environ.get('DB_USER', 'root'),
+            'USER': os.environ.get('DB_USER', 'carbon_user'),
             'PASSWORD': os.environ.get('DB_PASSWORD', 'root'),
-            'HOST': os.environ.get('DB_HOST', 'mysql'),
-            'PORT': os.environ.get('DB_PORT', '3306'),
+            'HOST': os.environ.get('DB_HOST', 'postgres'),
+            'PORT': os.environ.get('DB_PORT', '5432'),
         }
     }
 else:
