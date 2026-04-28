@@ -1,0 +1,57 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_DATABASE: carbon_db
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - mysql_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+
+  django:
+    build: ./django_backend
+    restart: always
+    command: >
+      sh -c "python manage.py makemigrations &&
+             python manage.py migrate &&
+             gunicorn django_project.wsgi:application --bind 0.0.0.0:8080"
+    volumes:
+      - ./django_backend:/app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    environment:
+      - DB_NAME=carbon_db
+      - DB_USER=root
+      - DB_PASSWORD=root
+      - DB_HOST=db
+      - DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY}
+      - DEBUG=True
+
+  fastapi:
+    build: ./fastapi_service
+    restart: always
+    volumes:
+      - ./fastapi_service:/app
+      - ./ml_model:/ml_model
+    ports:
+      - "8000:8000"
+    environment:
+      - MODEL_PATH=/ml_model/carbon_model.pkl
+
+  frontend:
+    build: ./frontend
+    restart: always
+    ports:
+      - "80:80"
+    depends_on:
+      - django
+      - fastapi
+
+volumes:
+  mysql_data:

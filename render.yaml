@@ -1,0 +1,51 @@
+services:
+  # FastAPI Machine Learning Service
+  - type: web
+    name: fastapi-service
+    env: python
+    buildCommand: "cd fastapi_service && pip install -r requirements.txt"
+    startCommand: "cd fastapi_service && uvicorn main:app --host 0.0.0.0 --port $PORT"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10.0
+      - key: MODEL_PATH
+        value: ../ml_model/carbon_model.pkl
+
+  # Django Backend Service
+  - type: web
+    name: django-backend
+    env: python
+    buildCommand: "cd django_backend && pip install -r requirements.txt && python manage.py migrate"
+    startCommand: "cd django_backend && gunicorn django_project.wsgi:application"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10.0
+      - key: DB_NAME
+        fromDatabase:
+          name: carbon-db
+          property: database
+      - key: DB_USER
+        fromDatabase:
+          name: carbon-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: carbon-db
+          property: password
+      - key: DB_HOST
+        fromDatabase:
+          name: carbon-db
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: carbon-db
+          property: port
+      - key: DJANGO_SECRET_KEY
+        generateValue: true
+
+databases:
+  # Free PostgreSQL database for Django
+  - name: carbon-db
+    databaseName: carbon_db
+    user: carbon_user
+    plan: free
