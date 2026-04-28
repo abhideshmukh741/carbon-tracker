@@ -1,7 +1,12 @@
 import axios from 'axios';
 
+let djangoUrl = import.meta.env.VITE_DJANGO_URL || 'http://localhost:8001/api';
+if (djangoUrl && !djangoUrl.endsWith('/api') && !djangoUrl.endsWith('/api/')) {
+    djangoUrl = djangoUrl.endsWith('/') ? `${djangoUrl}api` : `${djangoUrl}/api`;
+}
+
 const api = axios.create({
-    baseURL: import.meta.env.VITE_DJANGO_URL || 'http://localhost:8001/api',
+    baseURL: djangoUrl,
 });
 
 // Request interceptor to add the auth token header to requests
