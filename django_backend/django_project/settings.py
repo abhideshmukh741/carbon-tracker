@@ -1,7 +1,6 @@
 import os
 from pathlib import Path
-import pymysql
-pymysql.install_as_MySQLdb()
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -66,7 +65,7 @@ REST_FRAMEWORK = {
 if os.environ.get('DB_NAME'):
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.mysql',
+            'ENGINE': 'django.db.backends.postgresql',
             'NAME': os.environ.get('DB_NAME', 'carbon_db'),
             'USER': os.environ.get('DB_USER', 'carbon_user'),
             'PASSWORD': os.environ.get('DB_PASSWORD', 'root'),
