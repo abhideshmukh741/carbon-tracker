@@ -65,7 +65,7 @@ const LandingPage = () => {
                     <Link to="/calculate" className="btn btn-orange" style={{ padding: '1.2rem 4rem', fontSize: '1.1rem', borderRadius: '50px', boxShadow: '0 0 30px rgba(255, 122, 69, 0.3)' }}>
                         Launch Predictor
                     </Link>
-                    <a href={import.meta.env.VITE_DJANGO_URL ? import.meta.env.VITE_DJANGO_URL.replace(/\/api\/?$/, '/admin/') : 'http://localhost:8001/admin/'} target="_blank" rel="noopener noreferrer" className="btn" style={{ padding: '1.2rem 4rem', fontSize: '1.1rem', background: 'rgba(255,255,255,0.05)', borderRadius: '50px', border: '1px solid rgba(255,255,255,0.1)', color: '#fff' }}>
+                    <a href={import.meta.env.VITE_DJANGO_URL ? (import.meta.env.VITE_DJANGO_URL.endsWith('/api') || import.meta.env.VITE_DJANGO_URL.endsWith('/api/') ? import.meta.env.VITE_DJANGO_URL.replace(/\/api\/?$/, '/admin/') : import.meta.env.VITE_DJANGO_URL.replace(/\/+$/, '') + '/admin/') : 'http://localhost:8001/admin/'} target="_blank" rel="noopener noreferrer" className="btn" style={{ padding: '1.2rem 4rem', fontSize: '1.1rem', background: 'rgba(255,255,255,0.05)', borderRadius: '50px', border: '1px solid rgba(255,255,255,0.1)', color: '#fff' }}>
                         Admin Portal
                     </a>
                 </div>
