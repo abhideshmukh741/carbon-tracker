@@ -20,7 +20,7 @@ const ProfilePage = () => {
         <div className="container fade-in" style={{ paddingTop: '140px', paddingBottom: '80px' }}>
             <h1 style={{ fontSize: '3rem', fontWeight: 600, marginBottom: '2rem' }}>User Hub</h1>
             
-            <div className="grid gap-6 mt-8" style={{ gridTemplateColumns: 'minmax(300px, 1fr) minmax(500px, 2fr)', alignItems: 'start' }}>
+            <div className="grid grid-cols-2 mt-8" style={{ gap: '1.5rem', alignItems: 'start' }}>
                 <div style={{ height: '500px' }}>
                     <ProfileCard user={user} />
                 </div>

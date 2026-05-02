@@ -385,14 +385,13 @@ h2 {
     top: 70px;
     left: 1rem;
     right: 1rem;
-    background: var(--bg-card);
-    backdrop-filter: var(--glass-blur);
-    -webkit-backdrop-filter: var(--glass-blur);
+    background: #111214;
     border: 1px solid var(--glass-border);
     border-radius: 20px;
     padding: 1.5rem;
     gap: 1.5rem !important;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+    z-index: 1000;
   }
   .mobile-nav-visible a, .mobile-nav-visible button {
     width: 100%;
