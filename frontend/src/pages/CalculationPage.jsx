@@ -33,7 +33,7 @@ const CalculationPage = () => {
 
             const token = localStorage.getItem('access_token');
             if(token) {
-                await api.post('/predictions/save/', {
+                await api.post('predictions/save/', {
                     ...payload,
                     predicted_co2: predictRes.data.predicted_co2,
                     carbon_level: predictRes.data.carbon_level.level
@@ -53,15 +53,15 @@ const CalculationPage = () => {
         <div className="hero-overlay"></div>
         
         <div className="container" style={{ paddingTop: '160px', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
-            <div className="flex justify-between gap-8 fade-in-up" style={{ flexWrap: 'wrap' }}>
+            <div className="flex-col-mobile fade-in-up" style={{ display: 'flex', justifyContent: 'space-between', gap: '2rem', flexWrap: 'wrap' }}>
                 
                 {/* Left Side: Typography */}
-                <div style={{ flex: '1 1 500px', paddingRight: '2rem' }}>
+                <div style={{ flex: '1 1 300px', paddingRight: '2rem' }}>
                     <h1 className="huge-title">Calculate & <br/>Balance Your <br/>Footprint</h1>
                     <p style={{ maxWidth: '450px', marginBottom: '2rem' }}>
                         Empowering the world with actionable data. Our AI models analyze your habits and predict your environmental impact.
                     </p>
-                    <div style={{ display: 'flex', gap: '1rem' }}>
+                    <div className="flex-col-mobile" style={{ display: 'flex', gap: '1rem' }}>
                         {/* Fake active clients stat similar to mockup */}
                         <div className="glass-panel" style={{ padding: '0.8rem 1.5rem', display: 'inline-flex', alignItems: 'center', gap: '1rem', borderRadius: '50px' }}>
                             <div style={{ display: 'flex' }}>
@@ -78,7 +78,7 @@ const CalculationPage = () => {
                 </div>
 
                 {/* Right Side: Prediction Form overlay */}
-                <div style={{ flex: '1 1 400px', maxWidth: '500px' }}>
+                <div style={{ flex: '1 1 300px', maxWidth: '500px', width: '100%' }}>
                     {result ? (
                          <div className="glass-panel" style={{ padding: '2rem', animation: 'fadeInUp 0.5s ease-out' }}>
                             <h2 style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>Your Insight</h2>
@@ -99,7 +99,7 @@ const CalculationPage = () => {
                         <div className="glass-panel" style={{ padding: '2rem' }}>
                             <h2 style={{ fontSize: '1.5rem', marginBottom: '1.5rem' }}>Estimate Emission</h2>
                             <form onSubmit={handleSubmit}>
-                                <div className="flex gap-4">
+                                <div className="flex-col-mobile" style={{ display: 'flex', gap: '1rem' }}>
                                     <div className="form-group" style={{ flex: 1 }}>
                                         <label className="form-label">Electricity (kWh/day)</label>
                                         <input type="number" step="0.1" name="electricity_kwh" required onChange={handleChange} className="form-input glass-dropdown" />
@@ -110,7 +110,7 @@ const CalculationPage = () => {
                                     </div>
                                 </div>
                                 
-                                <div className="flex gap-4">
+                                <div className="flex-col-mobile" style={{ display: 'flex', gap: '1rem' }}>
                                     <div className="form-group" style={{ flex: 1 }}>
                                         <label className="form-label">Mode of Transport</label>
                                         <select name="transport_mode" onChange={handleChange} className="form-input glass-dropdown" value={formData.transport_mode}>
@@ -126,7 +126,7 @@ const CalculationPage = () => {
                                     </div>
                                 </div>
 
-                                <div className="flex gap-4">
+                                <div className="flex-col-mobile" style={{ display: 'flex', gap: '1rem' }}>
                                     <div className="form-group" style={{ flex: 1 }}>
                                         <label className="form-label">Diet</label>
                                         <select name="food_type" onChange={handleChange} className="form-input glass-dropdown" value={formData.food_type}>

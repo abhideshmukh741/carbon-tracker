@@ -8,7 +8,7 @@ const DashboardPage = () => {
     const [stats, setStats] = useState(null);
 
     useEffect(() => {
-        api.get('/dashboard/stats/')
+        api.get('dashboard/stats/')
             .then(res => setStats(res.data))
             .catch(err => console.error(err));
     }, []);
@@ -115,7 +115,7 @@ const DashboardPage = () => {
             </div>
             
             <div className="card-dark mt-8" style={{ border: '1px solid rgba(255,255,255,0.05)' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
+                <div className="flex-col-mobile" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem', gap: '1rem' }}>
                     <h2 style={{ fontSize: '1.2rem', margin: 0, color: 'var(--text-secondary)' }}>Footprint Benchmark Comparison</h2>
                     <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', background: 'rgba(255,255,255,0.05)', padding: '4px 10px', borderRadius: '20px' }}>Your Avg vs Global/Campus</span>
                 </div>

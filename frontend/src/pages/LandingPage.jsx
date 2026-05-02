@@ -61,7 +61,7 @@ const LandingPage = () => {
                 </div>
 
                 {/* CTA Overlay */}
-                <div style={{ display: 'flex', justifyContent: 'center', marginTop: '5rem', gap: '2rem' }}>
+                <div className="flex-col-mobile" style={{ display: 'flex', justifyContent: 'center', marginTop: '5rem', gap: '2rem' }}>
                     <Link to="/calculate" className="btn btn-orange" style={{ padding: '1.2rem 4rem', fontSize: '1.1rem', borderRadius: '50px', boxShadow: '0 0 30px rgba(255, 122, 69, 0.3)' }}>
                         Launch Predictor
                     </Link>

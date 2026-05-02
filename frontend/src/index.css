@@ -333,4 +333,85 @@ h2 {
   background: transparent;
 }
 
-
+/* ------------------------
+   Mobile Responsiveness
+------------------------ */
+@media (max-width: 768px) {
+  /* Typography Scaling */
+  .huge-title {
+    font-size: clamp(2.5rem, 8vw, 3.5rem);
+    margin-bottom: 1rem;
+  }
+  h2 { font-size: 1.5rem; }
+  
+  /* Layout Adjustments */
+  .container {
+    padding: 0 1rem;
+  }
+  .flex-col-mobile {
+    flex-direction: column !important;
+  }
+  
+  .glass-panel {
+    padding: 1.5rem !important;
+  }
+  
+  /* Forms */
+  .form-group {
+    width: 100% !important;
+    margin-bottom: 1rem;
+  }
+  
+  /* Buttons */
+  .btn {
+    padding: 0.8rem 1.2rem;
+    font-size: 0.95rem;
+    width: 100%;
+  }
+  
+  /* Grid Layouts */
+  .grid-cols-2 {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /* Navbar Overrides */
+  .mobile-nav-hidden {
+    display: none !important;
+  }
+  .mobile-nav-visible {
+    display: flex !important;
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    left: 1rem;
+    right: 1rem;
+    background: var(--bg-card);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 1.5rem;
+    gap: 1.5rem !important;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+  }
+  .mobile-nav-visible a, .mobile-nav-visible button {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+  
+  /* Procedural Hero Scaling */
+  .procedural-hero-container {
+    width: 100% !important;
+    height: 350px !important;
+    transform: scale(0.8);
+    margin-top: -2rem;
+    margin-bottom: -2rem;
+  }
+  .blob-1, .blob-2, .blob-3 {
+    transform: scale(0.6);
+  }
+  
+  /* Utilities */
+  .gap-8 { gap: 2rem !important; }
+}
